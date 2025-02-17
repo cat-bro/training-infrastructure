@@ -6,7 +6,13 @@
   vars:
     - vm_index: "{{ groups['containers_hosts'].index(inventory_hostname ) | int }}"
     - users: "{{ [__users[(vm_index | int)]] }}"
-    - docker_users: "{{ users | map(attribute='name') | list }}"
+    - docker_users: "{{ (users | map(attribute='name') | list) + ['ubuntu'] }}"
+  pre_tasks:
+    - name: Add admin key for ubuntu
+      authorized_key:
+        user: "ubuntu"
+        key: "{{ lookup('file', 'keys/ct_admin_key.pub') }}"
+        state: present
   roles:
     - common
     - slg.users
