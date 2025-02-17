@@ -11,7 +11,7 @@
 [qiime_hosts]
 
 # unix workshop hosts: list IPs
-[workshop_hosts]
+[unix_hosts]
 115.146.85.139
 115.146.84.105
 115.146.87.202

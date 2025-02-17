@@ -1,7 +1,7 @@
-- hosts: workshop_hosts
+- hosts: unix_hosts
   become: true
   vars_files:
-    - group_vars/workshop_hosts.yml
+    - group_vars/unix_hosts.yml
     - group_vars/VAULT
   roles:
     - common
